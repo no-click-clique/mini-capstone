@@ -1,0 +1,12 @@
+{
+  id: product.id,
+  name: product.name,
+  description: product.description,
+  price: product.price,
+  image_url: product.image_url,
+  formatted: {
+    discounted: product.is_discounted?,
+    tax: product.tax,
+    total: product.total
+  }
+}
