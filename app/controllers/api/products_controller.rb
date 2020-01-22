@@ -6,13 +6,19 @@ class Api::ProductsController < ApplicationController
 
   def create
     @product = Product.new(
-     name: params[:name],
-     price: params[:price],
-     description: params[:description],
-     image_url: params[:image_url]
+      name: params[:name],
+      price: params[:price],
+      description: params[:description],
+      image_url: params[:image_url],
+      stock: params[:stock]
     )
-    @product.save
-    render 'show.json.jb'
+    if @product.save
+      # happy path
+      render 'show.json.jb'
+    else
+      # sad path
+      render json: {errors: @product.errors.full_messages}, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -27,6 +33,7 @@ class Api::ProductsController < ApplicationController
     @product.price = params[:price] || @product.price
     @product.description = params[:description] || @product.description
     @product.image_url = params[:image_url] || @product.image_url
+    @product.stock = params[:stock] || @product.stock
 
     @product.save
     render 'show.json.jb'
