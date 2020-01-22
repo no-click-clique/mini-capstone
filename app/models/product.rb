@@ -1,5 +1,7 @@
 class Product < ApplicationRecord
 
+  validates :name, presence: true
+
   def is_discounted?
     # return true is price is less than 10
     price < 10
