@@ -1,5 +1,14 @@
 class Product < ApplicationRecord
 
+  # association method
+  belongs_to :supplier
+
+  # def supplier
+  #   Supplier.find_by(id: supplier_id) #returns a supplier hash
+  # end
+
+  has_many :images
+
   validates :name, presence: true
   validates :name, uniqueness: true
   validates :price, numericality: { greater_than: 0 }
@@ -18,12 +27,5 @@ class Product < ApplicationRecord
   def total
     price + tax
   end
-
-  # association method
-  belongs_to :supplier
-
-  # def supplier
-  #   Supplier.find_by(id: supplier_id) #returns a supplier hash
-  # end
 
 end

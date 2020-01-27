@@ -27,7 +27,6 @@ class Api::ProductsController < ApplicationController
       name: params[:name],
       price: params[:price],
       description: params[:description],
-      image_url: params[:image_url],
       stock: params[:stock]
     )
     if @product.save
@@ -50,7 +49,6 @@ class Api::ProductsController < ApplicationController
     @product.name = params[:name] || @product.name
     @product.price = params[:price] || @product.price
     @product.description = params[:description] || @product.description
-    @product.image_url = params[:image_url] || @product.image_url
     @product.stock = params[:stock] || @product.stock
 
     if @product.save
