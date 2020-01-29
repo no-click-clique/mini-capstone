@@ -1,5 +1,7 @@
 class Api::ProductsController < ApplicationController
 
+  before_action :authenticate_admin, except: [:index, :show]
+
   def index
     @products = Product.all
 
@@ -27,7 +29,8 @@ class Api::ProductsController < ApplicationController
       name: params[:name],
       price: params[:price],
       description: params[:description],
-      stock: params[:stock]
+      stock: params[:stock],
+      supplier_id: params[:supplier_id]
     )
     if @product.save
       # happy path
