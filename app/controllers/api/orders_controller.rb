@@ -39,4 +39,9 @@ class Api::OrdersController < ApplicationController
     end
   end
 
+  def show
+    @order = Order.find(params[:id])
+    render "show.json.jb"
+  end
+
 end

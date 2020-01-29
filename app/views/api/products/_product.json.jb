@@ -2,7 +2,7 @@
   id: product.id,
   name: product.name,
   description: product.description,
-  price: number_to_currency(product.price),
+  price: product.price,
   supplier_name: product.supplier.name,
   images: product.images,
   formatted: {
