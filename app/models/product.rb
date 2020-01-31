@@ -2,14 +2,20 @@ class Product < ApplicationRecord
 
   # association method
   belongs_to :supplier
+  has_many :images
   has_many :orders
+  
   has_many :category_products
+  has_many :categories, through: :category_products
+
+  # def categories
+  #   category_products.map { |category_product| category_product.category }
+  # end
 
   # def supplier
   #   Supplier.find_by(id: supplier_id) #returns a supplier hash
   # end
 
-  has_many :images
 
   validates :name, presence: true
   validates :name, uniqueness: true

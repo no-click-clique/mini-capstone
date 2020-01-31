@@ -21,6 +21,12 @@ class Api::ProductsController < ApplicationController
       @products = @products.order(:id)
     end
 
+    if params[:category]
+      # find all the products associated with that category
+      category = Category.find_by(name: params[:category])
+      @products = category.products
+    end
+
     render 'index.json.jb'
   end
 
