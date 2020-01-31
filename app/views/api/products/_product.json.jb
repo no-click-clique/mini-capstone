@@ -5,6 +5,7 @@
   price: product.price,
   supplier_name: product.supplier.name,
   images: product.images,
+  categories: product.category_names,
   formatted: {
     discounted: product.is_discounted?,
     price: number_to_currency(product.price),
